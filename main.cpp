@@ -11,7 +11,7 @@ using std::string;
 using std::vector;
 
 static const char* valid_key_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-static const char* valie_whitespace = " \t";
+static const char* valid_whitespace = " \t";
 static const char* programName;
 
 static void error(const string& message) {
@@ -83,7 +83,7 @@ static void loadEnemies(istream& in, vector<string>& validKeys) {
             values.clear();
             maxKeyLength = 0;
         } else {
-            int firstNonSpaceNdx = line.find_first_not_of(" \t");
+            int firstNonSpaceNdx = line.find_first_not_of(valid_whitespace);
             if (firstNonSpaceNdx > 0) {
                 // continuation
                 if (values.empty()) {
@@ -103,7 +103,7 @@ static void loadEnemies(istream& in, vector<string>& validKeys) {
                         error("Invalid key: ", key);
                     } else {
                         line = line.substr(firstNonAlphabetic);
-                        firstNonSpaceNdx = line.find_first_not_of(" \t");
+                        firstNonSpaceNdx = line.find_first_not_of(valid_whitespace);
                         if (firstNonAlphabetic == 0) {
                             error("Invalid key character at: ", line);
                         } else if (firstNonSpaceNdx == string::npos) {
