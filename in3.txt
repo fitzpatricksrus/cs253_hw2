@@ -1,0 +1,4 @@
+Name
+    Penguin
+ActualName Oswald Chesterfield Cobblepot
+Motif Birds, umbrellas
